@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Departments</title>
+    
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{% static 'css/department.css' %}">
+</head>
+{% endblock %}
+
+{% block title %}
+<header>
+    <h1>Our Medical Departments</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="department-section">
+    <div class="container">
+        {% for department in departments %}
+        <div class="department-box">
+            <div class="department">
+                <h2>{{ department.dept_name }}</h2>
+                <img src="{% static 'home/images/' %}{{ department.dept_name|lower }}.jpg" alt="{{ department.dept_name }} Department">
+                <p>{{ department.dept_description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+
+
+{% endblock %}

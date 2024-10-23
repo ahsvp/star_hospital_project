@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profiles</title>
+    
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{% static 'css/doctor.css' %}">
+</head>
+{% endblock %}
+<body>
+    <header>
+        {% block title %}   <h1>Our Doctors</h1> {% endblock %}
+    </header>
+    
+    {% block content %}
+    <section class="doctor-section">
+    <div class="container">
+        {% for doctor in doctors %}
+        <div class="doctor-box">
+            <div class="doctor">
+                
+                <h2>{{ doctor.name }}</h2>
+                <p><strong>Specialty:</strong> {{ doctor.specialty }}</p>
+                <p><strong>Experience:</strong> {{ doctor.experience_years }} Years</p>
+                <p><strong>Contact:</strong> {{ doctor.contact_email }}</p>
+                <p><strong>Bio:</strong> {{ doctor.bio }}</p>
+            </div>
+        </div>
+        {% empty %}
+            <p>No doctors available at the moment.</p>
+        {% endfor %}
+    </div>
+</section>
+
+    <!-- Link to the JavaScript file -->
+    <script src="{% static 'js/doctor.js' %}"></script>
+</body>
+{% endblock %}
+</html>

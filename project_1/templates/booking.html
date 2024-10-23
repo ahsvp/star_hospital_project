@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+    
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+</head>
+{% endblock %}
+
+{% block title %}
+<header>
+    <h1>Book an Appointment</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="booking-section">
+    <div class="container">
+        <div class="booking-box">
+            <h2>Appointment Details</h2>
+            <form id="appointmentForm">
+                <input type="text" id="full_name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+                <select id="doctor" required>
+                    <option value="Dr. John Doe">Dr. John Doe</option>
+                    <option value="Dr. Jane Smith">Dr. Jane Smith</option>
+                    <option value="Dr. Mike Johnson">Dr. Mike Johnson</option>
+                </select>
+                <input type="date" id="date" required>
+                <input type="time" id="time" required>
+                <textarea id="message" placeholder="Additional Notes"></textarea>
+                <button type="button" id="sendWhatsAppButton">Send to WhatsApp</button>
+            </form>
+            
+            <script>
+                document.getElementById('sendWhatsAppButton').addEventListener('click', function() {
+                    const full_name = document.getElementById('full_name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const doctor = document.getElementById('doctor').value;
+                    const preferred_date = document.getElementById('date').value;
+                    const preferred_time = document.getElementById('time').value;
+                    const additional_note = document.getElementById('message').value;
+            
+                    // Construct the WhatsApp message
+                    const message = `Hello!%20I%20would%20like%20to%20book%20an%20appointment.%0AFull%20Name:%20${encodeURIComponent(full_name)}%0AEmail:%20${encodeURIComponent(email)}%0APhone:%20${encodeURIComponent(phone)}%0ADoctor:%20${encodeURIComponent(doctor)}%0APreferred%20Date:%20${encodeURIComponent(preferred_date)}%0APreferred%20Time:%20${encodeURIComponent(preferred_time)}%0AAdditional%20Notes:%20${encodeURIComponent(additional_note)}`;
+            
+                    // WhatsApp URL
+                    const phoneNumber = "919562994182"; // Replace with your WhatsApp number
+                    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+                    // Open the WhatsApp link in a new tab or window
+                    window.open(whatsappURL, '_blank');
+                });
+            </script>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Link to the JavaScript file -->
+<script src="{% static 'js/booking.js' %}"></script>
+{% endblock %}

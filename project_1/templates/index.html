@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hospital Booking System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+   
+</head>
+<body>
+    <header>
+        <h1>Star Hospital</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'booking' %}">Booking</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'doctor' %}">Doctor</a></li>
+                <li><a href="{% url 'department' %}">Departments</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>{% block header %}People's Hospital{% endblock %}</h1>
+    {% block content %}
+    <section class="hero">
+        
+        <h2 id="hero-heading">Book Your Appointment Today</h2>
+        <p>Expert doctors in various specialties are here to care for you!</p>
+        <a href="{% url 'booking' %}" class="cta-btn">Book an Appointment</a>
+        
+    </section>
+    
+    <section class="services">
+        <div class="service-card">
+            <img src="{% static 'images/consultation.svg' %}" alt="Consultation Icon">
+            <h3>Expert Consultation</h3>
+            <p>Connect with our top specialists for professional health advice tailored to your needs.</p>
+        </div>
+        <div class="service-card">
+            <img src="{% static 'images/emergency.svg' %}" alt="Emergency Icon">
+            <h3>24/7 Emergency</h3>
+            <p>Our emergency services are available round the clock to provide immediate medical assistance.</p>
+        </div>
+        <div class="service-card">
+            <img src="{% static 'images/surgery.svg' %}" alt="Surgery Icon">
+            <h3>Advanced Surgery</h3>
+            <p>State-of-the-art surgical procedures performed by our experienced surgeons.</p>
+        </div>
+    </section>
+    
+    <section class="about-us">
+        <div class="about-content">
+            <h2>About Star Hospital</h2>
+            <p>At Star Hospital, we are dedicated to providing world-class healthcare services. Our team of experts, advanced technology, and personalized care make us a leader in the medical field. Your health is our priority, and we strive to offer the best treatment options available.</p>
+            <a href="{% url 'about' %}" class="cta-btn">Discover More</a>
+        </div>
+        <div class="about-image">
+            <img src="{% static 'images/hospital_building.jpg' %}" alt="Hospital Building">
+        </div>
+    </section>
+    
+    <section class="departments">
+        <h2>Our Specialties</h2>
+        <div class="department-grid">
+            <div class="department-card">
+                <h3>Cardiology</h3>
+                <p>Comprehensive heart care with the latest diagnostic and treatment options.</p>
+            </div>
+            <div class="department-card">
+                <h3>Orthopedics</h3>
+                <p>Expert care for bone, joint, and muscle issues, ensuring your mobility and health.</p>
+            </div>
+            <div class="department-card">
+                <h3>Pediatrics</h3>
+                <p>Quality care for children from birth to adolescence, with a focus on wellness and growth.</p>
+            </div>
+            <div class="department-card">
+                <h3>Neurology</h3>
+                <p>Advanced diagnosis and treatment for neurological disorders and conditions.</p>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    <footer>
+        <p>&copy; 2024 Hospital Booking System. All rights reserved.</p>
+    </footer>
+    
+    <script src="{% static 'js/index.js' %}" defer></script>
+</body>
+</html> 

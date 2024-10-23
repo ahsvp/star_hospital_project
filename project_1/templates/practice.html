@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Booking System</title>
+    
+</head> {% endblock %}
+<link rel="stylesheet" href="{% static '/css/styles.css' %}">
+<body>
+    <header>
+        {% block title %} <h1>Hospital Booking System</h1> {% endblock %}
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'booking' %}">Booking</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'doctor' %}">Doctor</a></li>
+                <li><a href="{% url 'departments' %}">Departments</a></li>
+                <li><a href="{% url 'practice' %}">Practice</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}
+    <section class="hero">
+        <h2>Book Your Appointment Today</h2>
+        <p>Expert doctors in various specialties are here to care for you!</p>
+        <a href="{% url 'booking' %}" class="cta-btn">Book an Appointment</a>
+    </section>
+
+    <section class="featured-departments">
+        <h3>Our Departments</h3>
+        <div class="department" id="dept-1">
+            <h4>Cardiology</h4>
+            <p>We offer expert care for heart-related issues with top cardiologists.</p>
+        </div>
+        <div class="department" id="dept-2">
+            <h4>Neurology</h4>
+            <p>Our neurology department is equipped to handle all brain-related treatments.</p>
+        </div>
+        <div class="department" id="dept-3">
+            <h4>Pediatrics</h4>
+            <p>Best care for children with highly skilled pediatricians.</p>
+        </div>
+    </section>
+
+    <section class="booking-form">
+        <h3>Book an Appointment</h3>
+        <form action="#">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="department">Select Department:</label>
+            <select id="department" name="department">
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="orthopedics">Orthopedics</option>
+                <option value="general">General Medicine</option>
+            </select>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </section>
+
+   
+
+    
+</body>
+{% endblock %}
+</html>
